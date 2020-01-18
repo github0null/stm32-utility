@@ -1,6 +1,10 @@
 #ifndef __H_SYSTICK
 #define __H_SYSTICK
 
+#ifdef __cplusplus
+extern "C" {
+#endif 
+
 /**
  * AHB 预分频系数，默认 1
 */
@@ -65,5 +69,9 @@ void SysTick_DelaySync(uint32 ms);
  * @param us 要延时的 us 数
 */
 void SysTick_DelaySyncUs(uint32 us);
+
+#ifdef __cplusplus
+}
+#endif 
 
 #endif
