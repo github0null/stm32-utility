@@ -6,7 +6,7 @@
 #define BIT_ADDR(addr, bitnum) MEM_ADDR(BITBAND(addr, bitnum))
 
 // Change this header file to fit your stm32 board
-#include <stm32f10x.h>
+#include "stm32f10x.h"
 
 //IO口地址映射
 #define GPIOA_ODR_Addr (GPIOA_BASE + 12)
