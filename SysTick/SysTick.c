@@ -72,14 +72,14 @@ void SysTick_SetTimeUs(uint32 us)
 {
     uint32 _unit = (SysTick->CTRL & 0x00000004) ? (_sysCLK / AHB_PRESCALE)
                                                 : ((_sysCLK / AHB_PRESCALE) / 8);
-    _SetTimerVal(((uint64)_unit) * us);
+    _SetTimerVal(((uint64)_unit) * us - 1);
 }
 
 void SysTick_SetTime(uint32 ms)
 {
     uint32 _unit = (SysTick->CTRL & 0x00000004) ? (_sysCLK * 1000 / AHB_PRESCALE)
                                                 : ((_sysCLK * 1000 / AHB_PRESCALE) / 8);
-    _SetTimerVal(((uint64)_unit) * ms);
+    _SetTimerVal(((uint64)_unit) * ms - 1);
 }
 
 void SysTick_Enable(uint8 _sysTick_status)

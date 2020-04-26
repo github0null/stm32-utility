@@ -1,7 +1,7 @@
 #ifndef _H_BIT_BAND_
 #define _H_BIT_BAND_
 
-#define BITBAND(addr, bitnum) ((addr & 0xF0000000U) + 0x02000000U + ((addr & 0xFFFFFU) << 5U) + (((bitnum)&0xFU) << 2U))
+#define BITBAND(addr, bitnum) ((addr & 0xF0000000U) + 0x02000000U + ((addr & 0xFFFFFU) << 5U) + ((bitnum) << 2U))
 #define MEM_ADDR(addr) *((volatile unsigned long *)(addr))
 #define BIT_ADDR(addr, bitnum) MEM_ADDR(BITBAND(addr, bitnum))
 
