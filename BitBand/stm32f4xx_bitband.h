@@ -16,6 +16,8 @@
 #define GPIOE_ODR_Addr (GPIOE_BASE + 0x14)
 #define GPIOF_ODR_Addr (GPIOF_BASE + 0x14)
 #define GPIOG_ODR_Addr (GPIOG_BASE + 0x14)
+#define GPIOH_ODR_Addr (GPIOH_BASE + 0x14)
+#define GPIOI_ODR_Addr (GPIOI_BASE + 0x14)
 
 #define GPIOA_IDR_Addr (GPIOA_BASE + 0x10)
 #define GPIOB_IDR_Addr (GPIOB_BASE + 0x10)
@@ -24,6 +26,8 @@
 #define GPIOE_IDR_Addr (GPIOE_BASE + 0x10)
 #define GPIOF_IDR_Addr (GPIOF_BASE + 0x10)
 #define GPIOG_IDR_Addr (GPIOG_BASE + 0x10)
+#define GPIOH_IDR_Addr (GPIOH_BASE + 0x10)
+#define GPIOI_IDR_Addr (GPIOI_BASE + 0x10)
 
 #define PAout(n) BIT_ADDR(GPIOA_ODR_Addr, n) //输出
 #define PAin(n) BIT_ADDR(GPIOA_IDR_Addr, n)  //输入
@@ -45,5 +49,11 @@
 
 #define PGout(n) BIT_ADDR(GPIOG_ODR_Addr, n)
 #define PGin(n) BIT_ADDR(GPIOG_IDR_Addr, n)
+
+#define PHout(n) BIT_ADDR(GPIOH_ODR_Addr, n)
+#define PHin(n) BIT_ADDR(GPIOH_IDR_Addr, n)
+
+#define PIout(n) BIT_ADDR(GPIOI_ODR_Addr, n)
+#define PIin(n) BIT_ADDR(GPIOI_IDR_Addr, n)
 
 #endif
