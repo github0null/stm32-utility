@@ -1,9 +1,7 @@
 #include "SysTick.h"
 
-typedef unsigned long long uint64;
-
-uint8 _isTimeout;
-uint32 _loopMax, _loopCount, _val, _sysCLK = 72;
+uint16_t _isTimeout;
+uint32_t _loopMax, _loopCount, _val, _sysCLK = 72;
 SysTickCallback _callback = 0x0;
 
 #define true 1
@@ -11,7 +9,7 @@ SysTickCallback _callback = 0x0;
 
 #define SysTick_IsTimeout() _isTimeout
 
-void SysTick_Init(uint32 _sysClock)
+void SysTick_Init(uint32_t _sysClock)
 {
     _sysCLK = _sysClock;
 }
@@ -50,7 +48,7 @@ void SysTick_SetCallback(SysTickCallback _func)
     _callback = _func;
 }
 
-void _SetTimerVal(uint64 val)
+void _SetTimerVal(uint64_t val)
 {
     _loopCount = 0;
     _loopMax = val / 0x1000000U + 1;
@@ -68,21 +66,21 @@ void _SetTimerVal(uint64 val)
     }
 }
 
-void SysTick_SetTimeUs(uint32 us)
+void SysTick_SetTimeUs(uint32_t us)
 {
-    uint32 _unit = (SysTick->CTRL & 0x00000004) ? (_sysCLK / AHB_PRESCALE)
+    uint32_t _unit = (SysTick->CTRL & 0x00000004) ? (_sysCLK / AHB_PRESCALE)
                                                 : ((_sysCLK / AHB_PRESCALE) / 8);
-    _SetTimerVal(((uint64)_unit) * us - 1);
+    _SetTimerVal(((uint64_t)_unit) * us - 1);
 }
 
-void SysTick_SetTime(uint32 ms)
+void SysTick_SetTime(uint32_t ms)
 {
-    uint32 _unit = (SysTick->CTRL & 0x00000004) ? (_sysCLK * 1000 / AHB_PRESCALE)
+    uint32_t _unit = (SysTick->CTRL & 0x00000004) ? (_sysCLK * 1000 / AHB_PRESCALE)
                                                 : ((_sysCLK * 1000 / AHB_PRESCALE) / 8);
-    _SetTimerVal(((uint64)_unit) * ms - 1);
+    _SetTimerVal(((uint64_t)_unit) * ms - 1);
 }
 
-void SysTick_Enable(uint8 _sysTick_status)
+void SysTick_Enable(uint8_t _sysTick_status)
 {
     switch (_sysTick_status)
     {
@@ -95,9 +93,9 @@ void SysTick_Enable(uint8 _sysTick_status)
     }
 }
 
-void SysTick_DelaySync(uint32 ms)
+void SysTick_DelaySync(uint32_t ms)
 {
-    uint32 flag;
+    uint32_t flag;
 
     SysTick_SetTime(ms);
 
@@ -123,9 +121,9 @@ void SysTick_DelaySync(uint32 ms)
     SysTick->CTRL &= 0xFFFFFFFC;
 }
 
-void SysTick_DelaySyncUs(uint32 us)
+void SysTick_DelaySyncUs(uint32_t us)
 {
-    uint32 flag;
+    uint32_t flag;
 
     SysTick_SetTimeUs(us);
 
