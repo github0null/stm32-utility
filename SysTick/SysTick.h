@@ -5,6 +5,8 @@
 extern "C" {
 #endif 
 
+#include <stdint.h>
+
 /**
  * AHB 预分频系数，默认 1
 */
@@ -15,8 +17,7 @@ extern "C" {
 /**
  * 包含定时器 SysTick 相关寄存器的头文件
 */
-#include <stm32f407xx.h>
-#include <stdint.h>
+#include <stm32f10x.h>
 
 typedef void (*SysTickCallback)(void);
 
